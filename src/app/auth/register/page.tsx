@@ -1,5 +1,9 @@
 'use client'
-
+//#7B9E5F OLIVE GREEN
+//B5AACF
+//BFC9D9 silver
+//FF8882  light red
+//2D3142  midnight blue
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -30,22 +34,7 @@ export default function RegisterPage() {
     }
   }
 
-  const uploadAvatar = async (file: File): Promise<string> => {
-    // Option 1: Upload to a service like Cloudinary, AWS S3, etc.
-    // Option 2: Convert to base64 and store in database (not recommended for production)
-    
-    // For now, convert to base64 (you should use a proper file upload service)
-    return new Promise((resolve) => {
-      const reader = new FileReader()
-      reader.onload = () => resolve(reader.result as string)
-      reader.readAsDataURL(file)
-    })
-  }
-
-  const generateDefaultAvatar = (name: string, email: string) => {
-    const seed = name || email.split('@')[0];
-    return `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(seed)}&backgroundColor=6366f1,8b5cf6,d946ef`;
-  }
+ 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -117,8 +106,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 flex items-center justify-center p-4">
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl  bg-gradient-to-br from-[#385bf8bb] via-[#2D3142] to-[#2D3142] shadow-2xl p-8 border border-white/20 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
           <p className="text-white/80">Join us to start sharing quotes</p>
@@ -156,7 +145,6 @@ export default function RegisterPage() {
                 className="hidden"
               />
             </label>
-            <p className="text-white/60 text-xs mt-2">Optional - A default avatar will be generated</p>
           </div>
 
           {/* Existing form fields */}
@@ -170,7 +158,7 @@ export default function RegisterPage() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your name"
               required
             />
@@ -186,7 +174,7 @@ export default function RegisterPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your email"
               required
             />
@@ -202,7 +190,7 @@ export default function RegisterPage() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your password"
               required
             />
@@ -218,7 +206,7 @@ export default function RegisterPage() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Confirm your password"
               required
             />
@@ -227,7 +215,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="w-full  bg-gradient-to-br from-[#ff4e44] cursor-pointer to-[#ff766f] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
             {isLoading ? (
               <>
@@ -243,7 +231,7 @@ export default function RegisterPage() {
         <div className="mt-6 text-center">
           <p className="text-white/80">
             Already have an account?{' '}
-            <Link href="/auth/signin" className="text-purple-300 hover:text-purple-200 font-medium">
+            <Link href="/auth/signin" className="text-red-300 hover:text-red-200 font-medium">
               Sign in
             </Link>
           </p>

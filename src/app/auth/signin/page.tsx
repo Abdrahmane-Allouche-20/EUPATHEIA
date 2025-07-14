@@ -1,5 +1,9 @@
 'use client'
-
+//#7B9E5F OLIVE GREEN
+//B5AACF
+//BFC9D9 silver
+//FF8882  light red
+//2D3142  midnight blue
 import React, { useState } from 'react'
 import { signIn} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -57,12 +61,12 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 flex items-center justify-center p-4">
+    <div className="min-h-screen  flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+        <div className="bg-gradient-to-br from-[#385bf8bb] via-[#2D3142] to-[#2D3142] backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
           {/* Header */}
           <div className="text-center">
-            <div className="mx-auto h-16 w-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4">
+            <div className="mx-auto h-16 w-16 bg-gradient-to-br from-[#ff4e44]  to-[#FF8882] rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
@@ -92,7 +96,7 @@ export default function SignInPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+                className="w-full px-4 py-3 border border-white/20 placeholder-white/50  text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -109,7 +113,7 @@ export default function SignInPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+                className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent rounded-lg backdrop-blur-sm"
                 placeholder="Enter your password"
               />
             </div>
@@ -121,7 +125,7 @@ export default function SignInPage() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-white/20 rounded bg-white/10"
+                  className="h-4 w-4  border-white/20 rounded bg-white/10"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-white/90">
                   Remember me
@@ -129,7 +133,7 @@ export default function SignInPage() {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-purple-300 hover:text-purple-200 transition-colors">
+                <a href="#" className="font-medium text-red-300 hover:text-red-200 transition-colors">
                   Forgot password?
                 </a>
               </div>
@@ -139,7 +143,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
+              className="w-full flex justify-center py-3 px-4  text-sm font-medium rounded-lg text-white bg-gradient-to-r from-[#ff4e44] via-[#ff4e44] to-[#ff7068] outline-none  disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
             >
               {isLoading ? (
                 <div className="flex items-center">
@@ -221,22 +225,14 @@ export default function SignInPage() {
           <div className="text-center mt-8">
             <p className="text-white/70">
               Don't have an account?{' '}
-              <Link href="/auth/register" className="font-medium text-purple-300 hover:text-purple-200 transition-colors">
+              <Link href="/auth/register" className="font-medium text-red-300 hover:text-red-200 transition-colors">
                 Sign up
               </Link>
             </p>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="text-center">
-          <p className="text-white/50 text-sm">
-            By signing in, you agree to our{' '}
-            <a href="#" className="text-purple-300 hover:text-purple-200 transition-colors">Terms of Service</a>
-            {' '}and{' '}
-            <a href="#" className="text-purple-300 hover:text-purple-200 transition-colors">Privacy Policy</a>
-          </p>
-        </div>
+       
       </div>
     </div>
   )
