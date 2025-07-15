@@ -66,7 +66,7 @@ function NavBar() {
       <Image 
         src={session?.user.image || '' } 
         alt='user picture' 
-        className='rounded-full border-2 border-white' 
+        className='rounded-full w-12 h-12 object-cover border-2 border-white' 
         width={40} 
         height={40}
       />
