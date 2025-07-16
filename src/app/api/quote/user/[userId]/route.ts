@@ -8,17 +8,18 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ) {
-  try {
-    const session = await getServerSession(authOptions);
+   const session = await getServerSession(authOptions);
     
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+  try {
+   
 
-    const { userId } = params;
+    const { userId } = await params;
 
     // Only allow users to fetch their own quotes (or admins)
-    if (session.user.id !== userId && !session.user.isAdmin) {
+    if (session.user.id !== userId ) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 

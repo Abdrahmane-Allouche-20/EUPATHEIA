@@ -7,27 +7,23 @@ import Link from 'next/link'
 import OverView from './(tabs)/OverView'
 import Quotes from './(tabs)/Quotes'
 import Settings from './(tabs)/Settings'
-import UpdateProfile from './UpdateProfile'
 
-//#7B9E5F OLIVE GREEN
-//B5AACF LAVENDER
-//BFC9D9 SILVER
-//FF8882 LIGHT RED
-//2D3142 MIDNIGHT BLUE
 
+// Updated Quote interface to match your API response
 export interface Quote {
   id: string
   content: string
-  author: string
+  author: string  // Simple string, not object
   category: string
   createdAt: string
 }
-export interface User{
-  id:string
-  name?:string|null
-  email?:string|null
-  image?:string|null
-  isAdmin?:boolean
+
+export interface User {
+  id: string
+  name?: string | null
+  email?: string | null
+  image?: string | null
+  isAdmin?: boolean
 }
 
 export default function ProfilePage() {
@@ -45,10 +41,14 @@ export default function ProfilePage() {
 
   const fetchUserQuotes = async () => {
     try {
+      setIsLoading(true)
       const response = await fetch(`/api/quote/user/${session?.user?.id}`)
       if (response.ok) {
         const quotes = await response.json()
+        console.log('Fetched quotes:', quotes)
         setUserQuotes(quotes)
+      } else {
+        console.error('Failed to fetch quotes:', response.status)
       }
     } catch (error) {
       console.error('Error fetching user quotes:', error)
@@ -56,6 +56,9 @@ export default function ProfilePage() {
       setIsLoading(false)
     }
   }
+
+  // Update your handleProfileUpdate function in page.tsx:
+ 
 
   if (status === 'loading') {
     return (
@@ -70,6 +73,7 @@ export default function ProfilePage() {
   }
 
   const user = session.user
+  console.log('Current user:', user)
 
   return (
     <div className="min-h-screen p-4">
@@ -121,7 +125,7 @@ export default function ProfilePage() {
                 </div>
                 <div className="bg-white/50 rounded-lg px-4 py-3 text-center">
                   <div className="text-2xl font-bold text-[#B5AACF]">
-                    {new Date(user?.createdAt || Date.now()).getFullYear()}
+                    {new Date().getFullYear()}
                   </div>
                   <div className="text-[#2D3142]/70 text-sm">Member Since</div>
                 </div>
@@ -148,16 +152,7 @@ export default function ProfilePage() {
                   </button>
                 </Link>
                 
-                {/* Update Profile Button */}
-                <button
-                  onClick={() => setShowUpdateModal(true)}
-                  className="bg-[#B5AACF] hover:bg-[#B5AACF]/80 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
-                >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  Edit Profile
-                </button>
+              
 
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
@@ -173,7 +168,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Tabs */}
+        {/* ADD THE MISSING TABS SECTION */}
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 mb-8">
           <div className="flex border-b border-white/20">
             <button
@@ -225,17 +220,6 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Update Profile Modal */}
-      <UpdateProfile
-        isOpen={showUpdateModal}
-        onClose={() => setShowUpdateModal(false)}
-        onUpdate={() => {
-          // Refresh user quotes after profile update
-          if (session?.user?.id) {
-            fetchUserQuotes()
-          }
-        }}
-      />
     </div>
   )
 }

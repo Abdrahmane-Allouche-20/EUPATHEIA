@@ -17,6 +17,7 @@ export async function POST(request: Request) {
             data: {
                 content: data.text || data.content,
                 authorId: session.user.id,
+                category: data.category || 'motivational'
             }
         })
         

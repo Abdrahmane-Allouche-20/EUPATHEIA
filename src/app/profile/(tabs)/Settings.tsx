@@ -24,18 +24,6 @@ function Settings({user}:{user:User}) {
                     </div>
                   </div>
 
-                  <div className="bg-white/5 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-[#2D3142] mb-4">Security</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-[#2D3142]/90 mb-1">Password</label>
-                        <p className="text-[#2D3142] bg-white/10 rounded-lg px-4 py-2">
-                          ********
-                        </p>
-                      </div>
-                      
-                    </div>
-                  </div>
                 </div>
 
                 <div className="flex justify-end gap-4">

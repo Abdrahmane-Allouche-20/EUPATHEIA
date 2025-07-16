@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> } // Fixed: params is now a Promise
 ) {
     const session = await getServerSession(authOptions)
     
@@ -14,11 +14,19 @@ export async function DELETE(
     }
     
     try {
-        const quoteId = params.id
+        const { id: quoteId } = await params // Fixed: Await params first, then destructure
         
         // First, check if the quote exists and belongs to the user
         const existingQuote = await prisma.quote.findUnique({
-            where: { id: quoteId }
+            where: { id: quoteId },
+            include: {
+                author: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
+            }
         })
         
         if (!existingQuote) {
@@ -31,13 +39,24 @@ export async function DELETE(
         }
         
         // Delete the quote
-        const deletedQuote = await prisma.quote.delete({
+        await prisma.quote.delete({
             where: { id: quoteId }
         })
         
-        return NextResponse.json({ message: 'Quote deleted successfully', quote: deletedQuote })
+        return NextResponse.json({ 
+            message: 'Quote deleted successfully',
+            deletedQuote: {
+                id: existingQuote.id,
+                content: existingQuote.content,
+                author: existingQuote.author?.name || 'Unknown',
+                category: existingQuote.category
+            }
+        })
     } catch (error) {
         console.error('Error deleting quote:', error)
-        return new NextResponse('Internal Server Error', { status: 500 })
+        return NextResponse.json(
+            { error: 'Internal Server Error' }, 
+            { status: 500 }
+        )
     }
 }

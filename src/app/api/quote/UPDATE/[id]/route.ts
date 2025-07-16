@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> } // Updated type
 ) {
     const session = await getServerSession(authOptions)
     
@@ -14,12 +14,25 @@ export async function PUT(
     }
     
     try {
-        const quoteId = params.id
+        const { id: quoteId } = await params // Await params, then destructure
         const data = await request.json()
+        
+        // Validate required fields
+        if (!data.content && !data.text) {
+            return new NextResponse('Content is required', { status: 400 })
+        }
         
         // First, check if the quote exists and belongs to the user
         const existingQuote = await prisma.quote.findUnique({
-            where: { id: quoteId }
+            where: { id: quoteId },
+            include: {
+                author: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
+            }
         })
         
         if (!existingQuote) {
@@ -35,21 +48,37 @@ export async function PUT(
         const updatedQuote = await prisma.quote.update({
             where: { id: quoteId },
             data: {
-                content: data.content || data.text,
+                content: (data.content || data.text).trim(),
+                category: data.category || existingQuote.category, // Allow category updates
             },
             include: {
                 author: {
                     select: {
                         id: true,
                         name: true,
-                        email: true,
-                        image: true
                     }
                 }
             }
         })
         
-        return NextResponse.json({ message: 'Quote updated successfully', quote: updatedQuote })
+        // Transform response to match expected format
+        const transformedQuote = {
+            id: updatedQuote.id,
+            content: updatedQuote.content,
+            author: updatedQuote.author?.name || 'Unknown',
+            category: updatedQuote.category,
+            createdAt: updatedQuote.createdAt.toISOString(),
+            updatedAt: updatedQuote.updatedAt.toISOString(),
+            user: {
+                id: updatedQuote.author?.id || '',
+                name: updatedQuote.author?.name || 'Unknown'
+            }
+        }
+        
+        return NextResponse.json({ 
+            message: 'Quote updated successfully', 
+            quote: transformedQuote 
+        })
     } catch (error) {
         console.error('Error updating quote:', error)
         return new NextResponse('Internal Server Error', { status: 500 })
