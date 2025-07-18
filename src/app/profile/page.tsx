@@ -13,7 +13,9 @@ import Settings from './(tabs)/Settings'
 export interface Quote {
   id: string
   content: string
-  author: string  // Simple string, not object
+  author:{
+    name:string
+  }// Simple string, not object
   category: string
   createdAt: string
 }
@@ -63,7 +65,7 @@ export default function ProfilePage() {
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7B9E5F]"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-cyan-400"></div>
       </div>
     )
   }
@@ -83,7 +85,7 @@ export default function ProfilePage() {
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* Profile Picture */}
             <div className="relative">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#BFC9D9] bg-white/10 flex items-center justify-center">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-green-400 bg-white/10 flex items-center justify-center">
                 {user?.image ? (
                   <img
                     src={user.image}
@@ -106,25 +108,22 @@ export default function ProfilePage() {
 
             {/* User Info */}
             <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl font-bold text-[#2D3142] mb-2">
+              <h1 className="text-lg md:text-2xl lg:text-4xl font-bold text-[#2D3142] mb-2">
                 {user?.name || 'User'}
               </h1>
-              <p className="text-[#2D3142]/80 text-lg mb-4">
+              <p className="text-[#2D3142]/80 text-base lg:text-lg mb-2 md:mb-4">
                 {user?.email}
               </p>
               
               {/* User Stats */}
               <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-6">
-                <div className="bg-white/50 rounded-lg px-4 py-3 text-center">
-                  <div className="text-2xl font-bold text-[#7B9E5F]">{userQuotes.length}</div>
+                <div className="bg-white/50 rounded-lg px-3 md:px-4 py-2 md:py-3 text-center">
+                  <div className="text-lg md:text-2xl font-bold text-green-500">{userQuotes.length}</div>
                   <div className="text-[#2D3142]/70 text-sm">Quotes</div>
                 </div>
-                <div className="bg-white/50 rounded-lg px-4 py-3 text-center">
-                  <div className="text-2xl font-bold text-[#FF8882]">0</div>
-                  <div className="text-[#2D3142]/70 text-sm">Favorites</div>
-                </div>
-                <div className="bg-white/50 rounded-lg px-4 py-3 text-center">
-                  <div className="text-2xl font-bold text-[#B5AACF]">
+
+                <div className="bg-white/50 rounded-lg px-3 md:px-4 py-2 md:py-3  text-center">
+                  <div className="text-lg md:text-2xl font-bold text-blue-500">
                     {new Date().getFullYear()}
                   </div>
                   <div className="text-[#2D3142]/70 text-sm">Member Since</div>
@@ -134,17 +133,17 @@ export default function ProfilePage() {
               {/* Role Badge */}
               {user?.isAdmin && (
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#7B9E5F]/20 border border-[#7B9E5F]/30 mb-4">
-                  <svg className="w-4 h-4 text-[#7B9E5F] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-[#7B9E5F] font-medium">Administrator</span>
+                  <span className="text-slate-950 font-medium">Administrator</span>
                 </div>
               )}
 
               {/* Action Buttons */}
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <Link href="/quotes/create">
-                  <button className="bg-[#7B9E5F] hover:bg-[#7B9E5F]/80 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                  <button className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-green-500 hover:to-blue-400 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
@@ -156,7 +155,7 @@ export default function ProfilePage() {
 
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
-                  className="bg-[#ff463c] hover:bg-[#ff463c]/80 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+                  className=" bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-400 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

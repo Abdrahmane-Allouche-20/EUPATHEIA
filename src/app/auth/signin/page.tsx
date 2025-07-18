@@ -63,16 +63,16 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen  flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
-        <div className="bg-gradient-to-br from-[#385bf8bb] via-[#2D3142] to-[#2D3142] backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+        <div className="bg-gradient-to-r from-blue-400  to-green-300 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
           {/* Header */}
           <div className="text-center">
-            <div className="mx-auto h-16 w-16 bg-gradient-to-br from-[#ff4e44]  to-[#FF8882] rounded-full flex items-center justify-center mb-4">
+            <div className="mx-auto h-16 w-16 bg-gradient-to-br from-[#ff4e44]  to-yellow-300 rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-white">Welcome Back</h2>
-            <p className="mt-2 text-white/70">Sign in to your account</p>
+            <h2 className="text-3xl font-bold text-[#2D3142]">Welcome Back</h2>
+            <p className="mt-2 text-[#2D3142]/70">Sign in to your account</p>
           </div>
 
           {/* Error Message */}
@@ -85,7 +85,7 @@ export default function SignInPage() {
           {/* Email/Password Form */}
           <form onSubmit={handleEmailSignIn} className="space-y-4 mb-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
                 Email address
               </label>
               <input
@@ -96,13 +96,13 @@ export default function SignInPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-white/20 placeholder-white/50  text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
+                className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50  text-[#2D3142] bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-white/90 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
                 Password
               </label>
               <input
@@ -113,7 +113,7 @@ export default function SignInPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent rounded-lg backdrop-blur-sm"
+                className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent rounded-lg backdrop-blur-sm"
                 placeholder="Enter your password"
               />
             </div>
@@ -127,13 +127,13 @@ export default function SignInPage() {
                   type="checkbox"
                   className="h-4 w-4  border-white/20 rounded bg-white/10"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-white/90">
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-[#2D3142]/90">
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-red-300 hover:text-red-200 transition-colors">
+                <a href="#" className="font-medium text-red-400 hover:text-red-500 transition-colors">
                   Forgot password?
                 </a>
               </div>
@@ -143,7 +143,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-3 px-4  text-sm font-medium rounded-lg text-white bg-gradient-to-r from-[#ff4e44] via-[#ff4e44] to-[#ff7068] outline-none  disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
+              className="w-full flex justify-center py-3 px-4  text-sm font-medium rounded-lg text-white bg-gradient-to-r from-[#ff4e44]  to-yellow-300 outline-none  disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
             >
               {isLoading ? (
                 <div className="flex items-center">
@@ -165,7 +165,7 @@ export default function SignInPage() {
               <div className="w-full border-t border-white/20" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white/10 text-white/70 rounded-full">Or continue with</span>
+              <span className="px-4 bg-white/10 text-[#2D3142]/70 rounded-full">Or continue with</span>
             </div>
           </div>
 
@@ -223,9 +223,9 @@ export default function SignInPage() {
 
           {/* Sign up link */}
           <div className="text-center mt-8">
-            <p className="text-white/70">
+            <p className="text-[#2D3142]/70">
               Don't have an account?{' '}
-              <Link href="/auth/register" className="font-medium text-red-300 hover:text-red-200 transition-colors">
+              <Link href="/auth/register" className="font-medium text-red-400 hover:text-red-500 transition-colors">
                 Sign up
               </Link>
             </p>

@@ -107,10 +107,10 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl  bg-gradient-to-br from-[#385bf8bb] via-[#2D3142] to-[#2D3142] shadow-2xl p-8 border border-white/20 w-full max-w-md">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl bg-gradient-to-r from-blue-400  to-green-300 shadow-2xl p-8 border border-white/20 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-white/80">Join us to start sharing quotes</p>
+          <h1 className="text-3xl font-bold text-[#2D3142] mb-2">Create Account</h1>
+          <p className="text-[#2D3142]/80">Join us to start sharing quotes</p>
         </div>
 
         {error && (
@@ -134,7 +134,7 @@ export default function RegisterPage() {
               </div>
             </div>
             <label htmlFor="avatar" className="cursor-pointer">
-              <span className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors inline-block">
+              <span className="bg-white/20 hover:bg-white/30 text-[#2D3142]/90 px-4 py-2 rounded-lg transition-colors inline-block">
                 Choose Avatar
               </span>
               <input
@@ -149,7 +149,7 @@ export default function RegisterPage() {
 
           {/* Existing form fields */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
               Name
             </label>
             <input
@@ -158,14 +158,14 @@ export default function RegisterPage() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your name"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
               Email
             </label>
             <input
@@ -174,14 +174,14 @@ export default function RegisterPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your email"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white/90 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
               Password
             </label>
             <input
@@ -190,14 +190,14 @@ export default function RegisterPage() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Enter your password"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-white/90 mb-2">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#2D3142]/90 mb-2">
               Confirm Password
             </label>
             <input
@@ -206,7 +206,7 @@ export default function RegisterPage() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-white/20 placeholder-white/50 text-white bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
+              className="w-full px-4 py-3 border border-white/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent  backdrop-blur-sm"
               placeholder="Confirm your password"
               required
             />
@@ -215,7 +215,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full  bg-gradient-to-br from-[#ff4e44] cursor-pointer to-[#ff766f] text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="w-full  bg-gradient-to-br from-[#ff4e44] cursor-pointer to-yellow-300 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
             {isLoading ? (
               <>
@@ -229,9 +229,9 @@ export default function RegisterPage() {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-white/80">
+          <p className="text-[#2D3142]/80">
             Already have an account?{' '}
-            <Link href="/auth/signin" className="text-red-300 hover:text-red-200 font-medium">
+            <Link href="/auth/signin" className="text-red-500 hover:text-red-600 font-medium">
               Sign in
             </Link>
           </p>

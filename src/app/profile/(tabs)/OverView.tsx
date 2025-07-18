@@ -36,7 +36,7 @@ function OverView({user,userQuotes}:{user:User,userQuotes:Quote[]}) {
                     <div className="space-y-3">
                       {userQuotes.slice(0, 3).map((quote) => (
                         <div key={quote.id} className="flex items-center space-x-3 bg-white/10 rounded-lg p-3">
-                          <div className="w-2 h-2 bg-[#7B9E5F] rounded-full"></div>
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                           <div className="flex-1">
                             <p className="text-[#2D3142] text-sm truncate">"{quote.content}"</p>
                             <p className="text-[#2D3142]/60 text-xs">

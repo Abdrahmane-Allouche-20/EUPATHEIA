@@ -20,8 +20,8 @@ export default function AddQuotePage() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
+      <div className="min-h-screen  flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-cyan-400"></div>
       </div>
     )
   }
@@ -52,7 +52,7 @@ export default function AddQuotePage() {
     setIsLoading(true)
     setError('')
 
-    console.log('📝 Submitting with category:', formData.category)
+  
 
     try {
       const response = await fetch('/api/quote/POST', {
@@ -189,7 +189,7 @@ export default function AddQuotePage() {
               <button
                 type="submit"
                 disabled={isLoading || !formData.text.trim()}
-                className="flex-1 flex justify-center py-3 px-4 border border-transparent text-white font-medium rounded-lg bg-gradient-to-br from-[#7B9E5F] to-[#2D3142] hover:from-[#7B9E5F]/80 hover:to-[#2D3142]/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7B9E5F] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="flex-1 flex justify-center py-3 px-4 border border-transparent text-white font-medium rounded-lg bg-gradient-to-r  from-blue-400 to-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7B9E5F]  disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
                 {isLoading ? (
                   <div className="flex items-center">
