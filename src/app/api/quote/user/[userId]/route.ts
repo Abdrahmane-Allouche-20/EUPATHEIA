@@ -3,19 +3,21 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/nextAuth';
 import { prisma } from '@/lib/prisma';
 
-export async function GET(
-  request: NextRequest,
-  context: { params: { userId: string } }
-) {
-  const { userId } = context.params;
+type Params = {
+  params: {
+    userId: string;
+  };
+};
 
+export async function GET(request: NextRequest, context: Params) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  // Only allow users to fetch their own quotes (or admins)
+  const userId = context.params.userId;
+
   if (session.user.id !== userId) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
