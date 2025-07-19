@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 
 type Params = {
   params: {
-    userId: string;
+    id: string;
   };
 };
 
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest, context: Params) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const userId = context.params.userId;
+  const userId = context.params.id;
 
   if (session.user.id !== userId) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
