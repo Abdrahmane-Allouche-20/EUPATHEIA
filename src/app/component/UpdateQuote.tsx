@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { quoteCategories } from '@/lib/categories'
 
 interface QuoteEditFormProps {
@@ -41,8 +41,8 @@ export default function QuoteEditForm({
       } else {
         console.error('Failed to update quote')
       }
-    } catch (error) {
-      console.error('Error updating quote:', error)
+    } catch (_error) { // renamed to _error to avoid unused var warning
+      console.error('Error updating quote')
     } finally {
       setSaving(false)
     }

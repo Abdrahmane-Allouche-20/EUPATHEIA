@@ -1,10 +1,6 @@
 'use client'
 
-//#7B9E5F OLIVE GREEN
-//B5AACF
-//BFC9D9 silver
-//FF8882  light red
-//2D3142  midnight blue
+
 
 import { useSession } from 'next-auth/react'
 import Loading from '../component/Loading'

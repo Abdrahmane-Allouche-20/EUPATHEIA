@@ -7,8 +7,8 @@ interface LoadingProps {
 }
 
 const Loading: React.FC<LoadingProps> = ({ 
-  size = 'md', 
-  text = '', 
+  size: _size = 'md', 
+  text: _text = '', 
   fullScreen = false 
 }) => {
   const containerClasses = fullScreen 
