@@ -102,7 +102,7 @@ export default function QuotesPage() {
       <div className="flex">
         {sidebarOpen && (
           <div
-            className="fixed inset-0 bg-black z-40 lg:hidden"
+            className="fixed inset-0 bg-white/50 backdrop-blur z-40 lg:hidden"
             onClick={() => setSidebarOpen(false)}
           />
         )}
@@ -117,9 +117,9 @@ export default function QuotesPage() {
           <div className="flex flex-col h-full">
             <div className="p-6 border-b border-white/20">
               <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-[#2D3142]">Categories</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-[#2D3142]">Categories</h2>
                 <button
-                  className="lg:hidden text-[#2D3142] hover:text-[#7B9E5F]"
+                  className="lg:hidden text-[#2D3142] hover:text-green-400"
                   onClick={() => setSidebarOpen(false)}
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,15 +136,15 @@ export default function QuotesPage() {
                   placeholder="Search quotes..."
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 py-2 pr-4 bg-white/10 border border-white/20 rounded-lg text-[#2D3142] placeholder-[#2D3142]/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+                  className="w-full pl-10 py-2 pr-4 bg-black/10 border border-black/20 rounded-lg text-[#2D3142] placeholder-[#2D3142]/50 focus:outline-none focus:ring-2 focus:ring-white/30"
                 />
               </div>
             </div>
             <div className="flex-1 overflow-y-auto p-4 space-y-2">
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`w-full text-left p-3 rounded-lg transition-colors duration-200 ${
-                  selectedCategory === 'all' ? 'bg-white/20 text-[#2D3142]' : 'text-[#2D3142] hover:bg-white/10 hover:text-white'
+                className={`w-full text-left p-3 rounded-lg transition-colors text-[#2D3142] duration-200 ${
+                  selectedCategory === 'all' ? 'bg-white/30  font-semibold ' : ' hover:bg-cyan-400/10 '
                 }`}
               >
                 <div className="flex justify-between items-center">
@@ -159,13 +159,13 @@ export default function QuotesPage() {
                 <button
                   key={cat.value}
                   onClick={() => setSelectedCategory(cat.value)}
-                  className={`w-full text-left p-3 rounded-lg transition-colors duration-200 ${
-                    selectedCategory === cat.value ? 'bg-white/20 text-[#2D3142]' : 'text-[#2D3142] hover:bg-white/10 hover:text-white'
+                  className={`w-full text-left p-3 rounded-lg text-[#2D3142] transition-colors duration-200 ${
+                    selectedCategory === cat.value ? 'bg-white/30 font-semibold ' : ' hover:bg-cyan-400/10 '
                   }`}
                 >
                   <div className="flex justify-between items-center">
                     <div className="flex items-center">
-                      <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${cat.color} mr-3`}></div>
+                      <div className={`w-4 h-4 text-sm rounded-full bg-gradient-to-r ${cat.color} mr-3`}></div>
                       <span>{cat.label}</span>
                     </div>
                     <span className="text-sm bg-white/20 px-2 py-1 rounded-full">{stats[cat.value] || 0}</span>
@@ -199,7 +199,7 @@ export default function QuotesPage() {
                 </svg>
               </button>
               <div>
-                <h1 className="text-3xl font-bold text-[#2D3142]">
+                <h1 className="text-2xl md:text-3xl font-bold text-[#2D3142]">
                   {selectedCategory === 'all'
                     ? 'All Quotes'
                     : quoteCategories.find(c => c.value === selectedCategory)?.label || 'Quotes'
@@ -211,7 +211,7 @@ export default function QuotesPage() {
               </div>
             </div>
             <Link href="/quotes/create" className="hidden lg:block">
-              <button className="bg-gradient-to-r from-green-300 to-cyan-300 hover:from-blue-400 hover:to-cyan-400 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center shadow-lg">
+              <button className="bg-gradient-to-r from-green-300 to-cyan-300 hover:from-blue-400 hover:to-cyan-400 text-white font-medium text-base py-2 px-6 rounded-lg transition-all duration-200 flex items-center shadow-lg">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>

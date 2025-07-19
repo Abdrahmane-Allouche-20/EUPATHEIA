@@ -4,11 +4,11 @@ import { Quote } from '../page'
 function OverView({user,userQuotes}:{user:User,userQuotes:Quote[]}) {
   return (
     <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#2D3142] mb-6">Account Overview</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-[#2D3142] mb-6">Account Overview</h2>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white/5 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-[#2D3142] mb-4">Personal Information</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-[#2D3142] mb-4">Personal Information</h3>
                     <div className="space-y-3">
                       <div>
                         <label className="block text-sm font-medium text-[#2D3142]/90 mb-1">Full Name</label>
@@ -32,7 +32,7 @@ function OverView({user,userQuotes}:{user:User,userQuotes:Quote[]}) {
                   </div>
 
                   <div className="bg-white/5 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-[#2D3142] mb-4">Recent Activity</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-[#2D3142] mb-4">Recent Activity</h3>
                     <div className="space-y-3">
                       {userQuotes.slice(0, 3).map((quote) => (
                         <div key={quote.id} className="flex items-center space-x-3 bg-white/10 rounded-lg p-3">

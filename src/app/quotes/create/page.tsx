@@ -125,12 +125,12 @@ export default function AddQuotePage() {
         )}
 
         {/* Form */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-6 md:p-8 border border-white/20">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Quote Text */}
             <div>
               <label htmlFor="text" className="block text-sm font-medium text-[#2D3142] mb-2">
-                Your Quote *
+                Your Quote 
               </label>
               <textarea
                 id="text"
@@ -139,7 +139,7 @@ export default function AddQuotePage() {
                 rows={4}
                 value={formData.text}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-[#2D3142]/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B9E5F] focus:border-transparent backdrop-blur-sm resize-none"
+                className="w-full px-4 py-3 border border-[#2D3142]/20 placeholder-[#2D3142]/50 text-[#2D3142] bg-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent backdrop-blur-sm resize-none"
                 placeholder="Enter your inspiring quote here..."
                 maxLength={500}
               />
@@ -182,14 +182,14 @@ export default function AddQuotePage() {
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="flex-1 py-3 px-4 border border-[#2D3142]/20 text-[#2D3142] rounded-lg bg-white/50 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#2D3142]/50 transition-all duration-200"
+                className="flex-1 py-2 px-3 md:text-base text-sm md:py-3 md:px-4 border border-[#2D3142]/20 text-[#2D3142] rounded-lg bg-white/50 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#2D3142]/50 transition-all duration-200"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isLoading || !formData.text.trim()}
-                className="flex-1 flex justify-center py-3 px-4 border border-transparent text-white font-medium rounded-lg bg-gradient-to-r  from-blue-400 to-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7B9E5F]  disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="flex-1 flex justify-center py-2 px-3 md:text-base text-sm md:py-3 md:px-4 border border-transparent text-white font-medium rounded-lg bg-gradient-to-r  from-blue-400 to-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7B9E5F]  disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
                 {isLoading ? (
                   <div className="flex items-center">

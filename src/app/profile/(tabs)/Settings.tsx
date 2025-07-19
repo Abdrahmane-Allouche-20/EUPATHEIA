@@ -26,11 +26,11 @@ function Settings({ user }: { user: User }) {
 
   return (
      <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#2D3142] mb-6">Account Settings</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-[#2D3142] mb-6">Account Settings</h2>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white/5 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-[#2D3142] mb-4">Profile Information</h3>
+                    <h3 className="text-lg md:text-xl font-semibold text-[#2D3142] mb-4">Profile Information</h3>
                     <div className="space-y-4">
                       <div>
                         <label className="block text-sm font-medium text-[#2D3142]/90 mb-1">Username</label>
@@ -51,7 +51,7 @@ function Settings({ user }: { user: User }) {
 
                 <div className="flex justify-end gap-4">
                   <button
-          className="bg-red-500 hover:bg-red-600 text-white cursor-pointer px-6 py-3 rounded-lg font-medium transition-colors flex items-center disabled:opacity-60"
+          className="bg-red-500 hover:bg-red-600 text-white cursor-pointer px-5 md:px-6 py-2 md:py-3 md:text-base text-sm rounded-lg font-medium transition-colors flex items-center disabled:opacity-60"
           onClick={handleDeleteAccount}
           disabled={loading}
         >

@@ -6,3 +6,23 @@ body {
   height: 100%;
   margin: 0;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  background: #fff7a4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff7a4;
+  border-radius: 8px;
+
+}
+
+
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FFD66B #FFF9BD;
+}

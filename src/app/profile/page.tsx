@@ -143,7 +143,7 @@ export default function ProfilePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <Link href="/quotes/create">
-                  <button className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-green-500 hover:to-blue-400 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                  <button className="text-sm md:text-base bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-green-500 hover:to-blue-400 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-colors flex items-center">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
@@ -155,7 +155,7 @@ export default function ProfilePage() {
 
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
-                  className=" bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-400 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+                  className="text-sm md:text-base  bg-gradient-to-r from-red-500 to-red-400 hover:from-red-600 hover:to-red-400 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-colors flex items-center"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -172,7 +172,7 @@ export default function ProfilePage() {
           <div className="flex border-b border-white/20">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`px-6 py-4 font-medium transition-colors ${
+              className={`px-5 md:px-6  py-3 md:py-4 font-medium transition-colors ${
                 activeTab === 'overview'
                   ? 'text-[#2D3142] border-b-2 border-[#2D3142]'
                   : 'text-blue-500 hover:text-[#2D3142]'
@@ -182,7 +182,7 @@ export default function ProfilePage() {
             </button>
             <button
               onClick={() => setActiveTab('quotes')}
-              className={`px-6 py-4 font-medium transition-colors ${
+              className={`px-5 md:px-6  py-3 md:py-4 font-medium transition-colors ${
                 activeTab === 'quotes'
                   ? 'text-[#2D3142] border-b-2 border-[#2D3142]'
                   : 'text-blue-500 hover:text-[#2D3142]'
@@ -192,7 +192,7 @@ export default function ProfilePage() {
             </button>
             <button
               onClick={() => setActiveTab('settings')}
-              className={`px-6 py-4 font-medium transition-colors ${
+              className={`px-5 md:px-6  py-3 md:py-4 font-medium transition-colors ${
                 activeTab === 'settings'
                   ? 'text-[#2D3142] border-b-2 border-[#2D3142]'
                   : 'text-blue-500 hover:text-[#2D3142]'
