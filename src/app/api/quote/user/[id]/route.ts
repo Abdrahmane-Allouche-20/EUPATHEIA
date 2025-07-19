@@ -9,14 +9,14 @@ type Params = {
   };
 };
 
-export async function GET(request: NextRequest, context: Params) {
+export async function GET(request: NextRequest,  { params }: { params: Promise<{ id: string }> } ) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const userId = context.params.id;
+  const userId = (await params).id;
 
   if (session.user.id !== userId) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
