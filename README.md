@@ -26,7 +26,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/eupatheia.git
+git clone https://github.com/Abdrahmane-Allouche-20/eupatheia.git
 cd eupatheia
 ```
 
