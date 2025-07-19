@@ -7,7 +7,7 @@ import Link from 'next/link'
 import OverView from './(tabs)/OverView'
 import Quotes from './(tabs)/Quotes'
 import Settings from './(tabs)/Settings'
-
+import Image from 'next/image'
 
 // Updated Quote interface to match your API response
 export interface Quote {
@@ -87,7 +87,7 @@ export default function ProfilePage() {
             <div className="relative">
               <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-green-400 bg-white/10 flex items-center justify-center">
                 {user?.image ? (
-                  <img
+                  <Image
                     src={user.image}
                     alt="Profile picture"
                     className="w-full h-full object-cover"
@@ -95,6 +95,7 @@ export default function ProfilePage() {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                     }}
+                    loading='lazy'
                   />
                 ) : (
                   <svg className="w-16 h-16 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
