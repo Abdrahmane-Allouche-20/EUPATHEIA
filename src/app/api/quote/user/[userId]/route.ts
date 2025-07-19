@@ -5,15 +5,15 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  context: { params: { userId: string } }
 ) {
+  const { userId } = context.params;
+
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-
-  const userId = params.userId;
 
   // Only allow users to fetch their own quotes (or admins)
   if (session.user.id !== userId) {
