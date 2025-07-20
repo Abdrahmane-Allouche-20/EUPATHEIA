@@ -30,8 +30,7 @@ export async function POST(request: NextRequest) {
       // No avatar file in JSON requests
     }
 
-    console.log('Content-Type:', contentType);
-    console.log('Received data:', { name, email, hasAvatar: !!avatarFile });
+ 
 
     // Validate input
     if (!email || !password) {
@@ -99,14 +98,14 @@ export async function POST(request: NextRequest) {
         await writeFile(filepath, buffer);
         imageUrl = `/uploads/${filename}`;
 
-        console.log('Avatar uploaded:', imageUrl);
+        
       } catch (uploadError) {
         console.error('Avatar upload error:', uploadError);
         // Continue without avatar if upload fails
       }
     }
 
-    console.log('Creating user with image:', imageUrl);
+   
 
     // Create user
     const user = await prisma.user.create({
@@ -121,7 +120,7 @@ export async function POST(request: NextRequest) {
     // Remove password from response
     const { password: _, ...userWithoutPassword } = user;
 
-    console.log('User created:', userWithoutPassword);
+ 
 
     return NextResponse.json({
       message: 'User created successfully',

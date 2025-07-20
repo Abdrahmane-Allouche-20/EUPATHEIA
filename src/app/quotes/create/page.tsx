@@ -40,7 +40,7 @@ export default function AddQuotePage() {
   }
 
   const handleCategoryChange = (category: string) => {
-    console.log('🔄 Category changed to:', category)
+    
     setFormData(prev => ({
       ...prev,
       category

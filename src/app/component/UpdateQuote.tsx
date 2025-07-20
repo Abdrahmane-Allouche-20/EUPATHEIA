@@ -53,13 +53,13 @@ export default function QuoteEditForm({
       <textarea
         value={editText}
         onChange={(e) => setEditText(e.target.value)}
-        className="w-full p-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none"
+        className="w-full p-3 bg-white/20 border border-white/30 rounded-lg text-slate-950 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none"
         rows={3}
       />
       <select
         value={editCategory}
         onChange={(e) => setEditCategory(e.target.value)}
-        className="w-full p-2 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+        className="w-full p-2 bg-white/20 border border-white/30 rounded-lg text-slate-950 focus:outline-none focus:ring-2 focus:ring-white/50"
       >
         {quoteCategories.map(cat => (
           <option key={cat.value} value={cat.value} className="bg-gray-800">

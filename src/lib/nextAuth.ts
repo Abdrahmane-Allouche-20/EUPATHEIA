@@ -165,13 +165,7 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn({ user, account, profile }) {
-      console.log("User signed in:", { 
-        user: user.email, 
-        provider: account?.provider,
-        id: user.id,
-        image: user.image,
-        name: user.name
-      });
+
     }
   },
   debug: process.env.NODE_ENV === "development", // Enable debug logs in development

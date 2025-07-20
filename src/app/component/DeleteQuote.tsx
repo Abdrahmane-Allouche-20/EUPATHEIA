@@ -23,7 +23,7 @@ export default function QuoteDeleteActions({
 
       if (response.ok) {
         const result = await response.json()
-        console.log('✅ Quote deleted:', result.message)
+        
         onDeleteSuccess()
       } else {
         const errorData = await response.json()

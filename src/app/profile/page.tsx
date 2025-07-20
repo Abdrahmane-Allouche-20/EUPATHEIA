@@ -47,7 +47,7 @@ export default function ProfilePage() {
       const response = await fetch(`/api/quote/user/${session?.user?.id}`)
       if (response.ok) {
         const quotes = await response.json()
-        console.log('Fetched quotes:', quotes)
+        
         setUserQuotes(quotes)
       } else {
         console.error('Failed to fetch quotes:', response.status)
@@ -75,7 +75,7 @@ export default function ProfilePage() {
   }
 
   const user = session.user
-  console.log('Current user:', user)
+  
 
   return (
     <div className="min-h-screen p-4">

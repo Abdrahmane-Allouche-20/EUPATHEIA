@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { quoteCategories } from '@/lib/categories'
 import QuoteEditForm from '@/app/component/UpdateQuote'
 import QuoteDeleteActions from '@/app/component/DeleteQuote'
+
 interface Quote {
   id: string
   content: string
@@ -40,7 +41,6 @@ export default function QuotesPage() {
       const res = await fetch('/api/quote/GET')
       if (res.ok) {
         const data: Quote[] = await res.json()
-        console.log('📝 Fetched quotes:', data[0]) // Debug log
         setQuotes(data)
       } else {
         console.error('Failed to fetch quotes')
@@ -82,8 +82,6 @@ export default function QuotesPage() {
     setEditText('')
     setEditCategory('')
   }
-
- 
 
   const stats: Record<string, number> = { all: quotes.length }
   quoteCategories.forEach(cat => {
@@ -260,7 +258,7 @@ export default function QuotesPage() {
                         {/* Quote Content */}
                         <div className="mb-4">
                           <blockquote className="text-white text-lg leading-relaxed italic">
-                            "{q.content}"
+                            &quot;{q.content}&quot;
                           </blockquote>
                         </div>
 
@@ -281,13 +279,10 @@ export default function QuotesPage() {
                           <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white/20 text-white">
                             {quoteCategories.find(cat => cat.value === q.category)?.label || q.category}
                           </span>
-                         
                         </div>
 
                         {/* Actions */}
-                        <div className="flex items-center justify-between mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                         
-                           
+                        <div className="flex items-center justify-between md:mt-4 md:opacity-0 opacity-100 group-hover:opacity-100 transition-opacity duration-200">
                           {/* Edit/Delete buttons for own quotes */}
                           {session?.user?.id === q.user?.id && (
                             <div className="flex items-center justify-end w-full space-x-2">
@@ -301,11 +296,11 @@ export default function QuotesPage() {
                                 </svg>
                               </button>
                               <QuoteDeleteActions
-  quoteId={q.id}
-  onDeleteSuccess={async () => {
-    await fetchQuotes()
-  }}
-/>
+                                quoteId={q.id}
+                                onDeleteSuccess={async () => {
+                                  await fetchQuotes()
+                                }}
+                              />
                             </div>
                           )}
                         </div>
