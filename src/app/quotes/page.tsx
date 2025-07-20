@@ -173,7 +173,7 @@ export default function QuotesPage() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-0 lg:ml-80">
+      <div className="flex-1 flex flex-col min-h-0 ">
         <header className="backdrop-blur-lg border-b border-white/90 p-6 flex justify-between items-center flex-shrink-0">
           <div className="flex items-center">
             <button
